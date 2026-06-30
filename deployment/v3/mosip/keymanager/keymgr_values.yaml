@@ -1,1 +1,2 @@
+springConfigNameEnv: migration
 mountPath: /mnt/platformkeys

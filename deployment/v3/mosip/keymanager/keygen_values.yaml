@@ -1,4 +1,4 @@
-springConfigNameEnv: kernel
+springConfigNameEnv: migration
 softHsmCM: softhsm-kernel-share
 
 mountPath: /mnt/platformkeys
