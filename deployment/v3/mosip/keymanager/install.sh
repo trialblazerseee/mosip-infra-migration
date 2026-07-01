@@ -26,7 +26,7 @@ function installing_keymanager() {
   read -p "Would you like to enable volume (true/false) : [ default : false ] : " enable_volume
   enable_volume=${enable_volume:-$default_enable_volume}
 
-  KERNEL_KEYGEN_HELM_ARGS='--set springConfigNameEnv="kernel" --set softHsmCM="softhsm-kernel-share"'
+  KERNEL_KEYGEN_HELM_ARGS='--set springConfigNameEnv="migration" --set softHsmCM="softhsm-kernel-share"'
   KERNEL_HELM_ARGS=''
   if [[ $enable_volume == 'true' ]]; then
 
@@ -38,12 +38,12 @@ function installing_keymanager() {
     read -p "Provide the mount path for volume [ default : '/home/mosip/config/' ] : " volume_mount_path
     volume_mount_path=${volume_mount_path:-$default_volume_mount_path}
 
-    PVC_CLAIM_NAME='kernel-keygen-keymanager'
+    PVC_CLAIM_NAME='kernel-keygen-keymanager-p12'
     KERNEL_KEYGEN_HELM_ARGS="--set persistence.enabled=true  \
                --set volumePermissions.enabled=true \
                --set persistence.size=$volume_size \
                --set persistence.mountDir=\"$volume_mount_path\" \
-               --set springConfigNameEnv='kernel' \
+               --set springConfigNameEnv='migration' \
                --set persistence.pvc_claim_name=\"$PVC_CLAIM_NAME\"  \
               "
     KERNEL_HELM_ARGS="--set persistence.enabled=true  \
