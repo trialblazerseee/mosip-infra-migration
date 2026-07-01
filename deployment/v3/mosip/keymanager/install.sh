@@ -49,6 +49,7 @@ function installing_keymanager() {
     KERNEL_HELM_ARGS="--set persistence.enabled=true  \
                    --set volumePermissions.enabled=true \
                    --set persistence.mountDir=\"$volume_mount_path\" \
+                   --set springConfigNameEnv='migration' \
                    --set persistence.existingClaim=\"$PVC_CLAIM_NAME\"  \
                    --set extraEnvVarsCM={'global','config-server-share','artifactory-share'} \
                   "
@@ -57,10 +58,10 @@ function installing_keymanager() {
   echo "KERNEL HELM ARGS $KERNEL_HELM_ARGS"
 
   echo Running keygenerator. This may take a few minutes..
-  helm -n $NS install kernel-keygen-migrator mosip/keygen  $KERNEL_KEYGEN_HELM_ARGS --wait --wait-for-jobs --version $CHART_VERSION  -f keygen_values.yaml
+  helm -n $NS install kernel-keygen-migrator mosip/keygen  $KERNEL_KEYGEN_HELM_ARGS --wait --wait-for-jobs --version $CHART_VERSION
 
   echo Installing keymanager
-  helm -n $NS install keymanager-migrator mosip/keymanager $KERNEL_HELM_ARGS --wait --version $CHART_VERSION  -f keymgr_values.yaml
+  helm -n $NS install keymanager-migrator mosip/keymanager $KERNEL_HELM_ARGS --wait --version $CHART_VERSION
 
   kubectl -n $NS  get deploy -o name |  xargs -n1 -t  kubectl -n $NS rollout status
   echo Installed keymanager services
