@@ -38,6 +38,8 @@ function installing_key_migration_utility() {
   helm -n $NS install key-migration-utility-$module mosip/key-migration-utility \
   --set softHsmCM=softhsm-$module-share \
   --set springConfigNameEnv=$config_prop \
+  --set extraEnvVars[0].name=SPRING_MAIN_ALLOW-CIRCULAR-REFERENCES \
+  --set extraEnvVars[0].value=true \
   --wait --wait-for-jobs \
   --version $CHART_VERSION \
   -f keymgr.yaml
