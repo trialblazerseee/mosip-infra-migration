@@ -39,7 +39,7 @@ function installing_key_migration_utility() {
   --set softHsmCM=softhsm-$module-share \
   --set springConfigNameEnv=$config_prop \
   --wait --wait-for-jobs \
-  --version $CHART_VERSION
+  --version $CHART_VERSION \
   -f keymgr.yaml
 
   echo Installed key-migration-utility services
