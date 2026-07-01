@@ -57,10 +57,10 @@ function installing_keymanager() {
   echo "KERNEL HELM ARGS $KERNEL_HELM_ARGS"
 
   echo Running keygenerator. This may take a few minutes..
-  helm -n $NS install kernel-keygen mosip/keygen  $KERNEL_KEYGEN_HELM_ARGS --wait --wait-for-jobs --version $CHART_VERSION
+  helm -n $NS install kernel-keygen-migrator mosip/keygen  $KERNEL_KEYGEN_HELM_ARGS --wait --wait-for-jobs --version $CHART_VERSION  -f keygen_values.yaml
 
   echo Installing keymanager
-  helm -n $NS install keymanager mosip/keymanager $KERNEL_HELM_ARGS --wait --version $CHART_VERSION
+  helm -n $NS install keymanager-migrator mosip/keymanager $KERNEL_HELM_ARGS --wait --version $CHART_VERSION  -f keymgr_values.yaml
 
   kubectl -n $NS  get deploy -o name |  xargs -n1 -t  kubectl -n $NS rollout status
   echo Installed keymanager services
