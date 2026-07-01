@@ -49,7 +49,8 @@ function installing_keymanager() {
     KERNEL_HELM_ARGS="--set persistence.enabled=true  \
                    --set volumePermissions.enabled=true \
                    --set persistence.mountDir=\"$volume_mount_path\" \
-                   --set springCloudConfigName='migration' \
+                   --set extraEnvVars[0].name='SPRING_CLOUD_CONFIG_NAME' \
+                   --set extraEnvVars[0].value='migration' \
                    --set persistence.existingClaim=\"$PVC_CLAIM_NAME\"  \
                    --set extraEnvVarsCM={'global','config-server-share','artifactory-share'} \
                   "
