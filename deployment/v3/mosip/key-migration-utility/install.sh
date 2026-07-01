@@ -40,6 +40,7 @@ function installing_key_migration_utility() {
   --set springConfigNameEnv=$config_prop \
   --wait --wait-for-jobs \
   --version $CHART_VERSION
+  -f keymgr.yaml
 
   echo Installed key-migration-utility services
   return 0
