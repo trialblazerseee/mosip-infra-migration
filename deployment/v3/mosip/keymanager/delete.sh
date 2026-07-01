@@ -12,8 +12,8 @@ function deleting_keymanager() {
       read -p "Are you sure you want to delete keymanager helm chart?(Y/n) " yn
       if [ $yn = "Y" ]
         then
-          helm -n $NS delete kernel-keygen
-          helm -n $NS delete keymanager
+          helm -n $NS delete kernel-keygen-migrator
+          helm -n $NS delete keymanager-migrator
           break
         else
           break
