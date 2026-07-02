@@ -40,9 +40,9 @@ function installing_key_migration_utility() {
   --set springConfigNameEnv=$config_prop \
   --set extraEnvVars[0].name=SPRING_MAIN_ALLOW-CIRCULAR-REFERENCES \
   --set-string extraEnvVars[0].value=true \
-  --set extraEnvVars[1].name=ARTIFACTORY_URL_ENV \
+  --set extraEnvVars[1].name=artifactory_url_env \
   --set extraEnvVars[1].value=http://artifactory.artifactory:80 \
-  --set extraEnvVars[2].name=HSM_ZIP_FILE_PATH \
+  --set extraEnvVars[2].name=hsm_zip_file_path \
   --set extraEnvVars[3].value=/artifactory/libs-release-local/hsm/client1.zip \
   --wait --wait-for-jobs \
   --version $CHART_VERSION \
