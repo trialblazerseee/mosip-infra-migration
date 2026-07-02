@@ -58,7 +58,7 @@ function installing_keymanager() {
                    --set extraEnvVars[1].name=artifactory_url_env  \
                    --set extraEnvVars[1].value=http://artifactory.artifactory:80 \
                    --set extraEnvVars[2].name=hsm_zip_file_path \
-                   --set extraEnvVars[2].value=/artifactory/libs-release-local/hsm/client1.zip \
+                   --set extraEnvVars[2].value=/artifactory/libs-release-local/hsm/client.zip \
                    --set persistence.existingClaim=\"$PVC_CLAIM_NAME\"  \
                    --set extraEnvVarsCM={'global','config-server-share','artifactory-share'} \
                   "
