@@ -47,7 +47,7 @@ function installing_keymanager() {
                --set extraEnvVars[0].name=artifactory_url_env  \
                --set extraEnvVars[0].value=http://artifactory.artifactory:80 \
                --set extraEnvVars[1].name=hsm_zip_file_path \
-               --set extraEnvVars[1].value=/artifactory/libs-release-local/hsm/client1.zip \
+               --set extraEnvVars[1].value=/artifactory/libs-release-local/hsm/client.zip \
                --set persistence.pvc_claim_name=\"$PVC_CLAIM_NAME\"  \
               "
     KERNEL_HELM_ARGS="--set persistence.enabled=true  \
