@@ -46,8 +46,8 @@ function installing_keymanager() {
                --set springConfigNameEnv='migration' \
                --set extraEnvVars[0].name=ARTIFACTORY_URL_ENV \
                --set extraEnvVars[0].value=http://artifactory.artifactory:80 \
-               --set extraEnvVars[0].name=HSM_ZIP_FILE_PATH \
-               --set extraEnvVars[0].value=/artifactory/libs-release-local/hsm/client1.zip \
+               --set extraEnvVars[1].name=HSM_ZIP_FILE_PATH \
+               --set extraEnvVars[1].value=/artifactory/libs-release-local/hsm/client1.zip \
                --set persistence.pvc_claim_name=\"$PVC_CLAIM_NAME\"  \
               "
     KERNEL_HELM_ARGS="--set persistence.enabled=true  \
@@ -55,10 +55,10 @@ function installing_keymanager() {
                    --set persistence.mountDir=\"$volume_mount_path\" \
                    --set extraEnvVars[0].name=SPRING_CLOUD_CONFIG_NAME \
                    --set extraEnvVars[0].value=migration \
-                   --set extraEnvVars[0].name=ARTIFACTORY_URL_ENV \
-                   --set extraEnvVars[0].value=http://artifactory.artifactory:80 \
-                   --set extraEnvVars[0].name=HSM_ZIP_FILE_PATH \
-                   --set extraEnvVars[0].value=/artifactory/libs-release-local/hsm/client1.zip \
+                   --set extraEnvVars[1].name=ARTIFACTORY_URL_ENV \
+                   --set extraEnvVars[1].value=http://artifactory.artifactory:80 \
+                   --set extraEnvVars[2].name=HSM_ZIP_FILE_PATH \
+                   --set extraEnvVars[2].value=/artifactory/libs-release-local/hsm/client1.zip \
                    --set persistence.existingClaim=\"$PVC_CLAIM_NAME\"  \
                    --set extraEnvVarsCM={'global','config-server-share','artifactory-share'} \
                   "
