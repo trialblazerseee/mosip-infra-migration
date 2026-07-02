@@ -43,7 +43,7 @@ function installing_key_migration_utility() {
   --set extraEnvVars[1].name=artifactory_url_env \
   --set extraEnvVars[1].value=http://artifactory.artifactory:80 \
   --set extraEnvVars[2].name=hsm_zip_file_path \
-  --set extraEnvVars[3].value=/artifactory/libs-release-local/hsm/client1.zip \
+  --set extraEnvVars[2].value=/artifactory/libs-release-local/hsm/client1.zip \
   --wait --wait-for-jobs \
   --version $CHART_VERSION \
   -f keymgr.yaml
